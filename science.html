@@ -24,13 +24,11 @@
 
 <body id="body1" onbeforeunload="unloading()">
 	<div id="navbar">
-		<a onclick="uploadImage()" class="prevent-select">Send Image</a>
 		<a id="room_name_display" class="prevent-select"></a>
 		<a onclick="shutDown()" class="prevent-select" style="float: right;">Close The Site</a>
 		<a onclick="logout()" class="prevent-select" style="float: right;">Logout</a>
 		<a onclick="back()" class="prevent-select" style="float: right;">Back</a>
 		<a onclick="bottom()" class="prevent-select" style="float: right;">Scroll to bottom</a>
-		<input type="file" id="photo" class="image_send btn btn-default" accept="image/*" />
 	</div>
 	<div class="container">
 		<center>
@@ -49,7 +47,7 @@
 			<button onclick="send()" class="btn btn-success sub-text prevent-select" id="send-button"
 				type="submit">Send</button>
 		</div>
-		<p id="version_info">v0.1.12</p>
+		<p id="version_info">v0.2.1</p>
 		<div id="snackbar"></div>
 		<p id="msg_counter"></p>
 	</center>
