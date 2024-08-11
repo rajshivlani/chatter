@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CBSE Resources</title>
+
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+	<link rel="stylesheet" type="text/css" href="style_login.css">
+	<link rel="icon" type="jpg" href="cbse.png">
+	<script src="cbse.js"></script>
+</head>
+
+<body id="body1" class="prevent-select" style="background-color: white;">
+	<center>
+		<div class="container form-group" onclick="onclick">
+			<div class="top"></div>
+			<div class="bottom"></div>
+			<div class="center">
+				<h2 class="sub-text prevent-select">Please Sign In</h2>
+				<input id="user_name" class="sub-text form-control prevent-select" type="username"
+					placeholder="User name" />
+				<input id="password_entry" class="form-control sub-text prevent-select" type="password"
+					placeholder="Password" />
+				<button id="login-button" class="btn btn-success prevent-select sub-text" onclick="addUser()"
+					type="submit">Sign In</button>
+				<p class="sub-text">Don't have an account? <a href="sign_up.html">Sign Up</a></p>
+			</div>
+		</div>
+		<script>
+			const getUA = () => {
+				let device = "Unknown";
+				const ua = {
+					"Generic Linux": /Linux/i,
+					"Android": /Android/i,
+					"BlackBerry": /BlackBerry/i,
+					"Bluebird": /EF500/i,
+					"Chrome OS": /CrOS/i,
+					"Datalogic": /DL-AXIS/i,
+					"Honeywell": /CT50/i,
+					"iPad": /iPad/i,
+					"iPhone": /iPhone/i,
+					"iPod": /iPod/i,
+					"macOS": /Macintosh/i,
+					"Windows": /IEMobile|Windows/i,
+					"Zebra": /TC70|TC55/i,
+				}
+				Object.keys(ua).map(v => navigator.userAgent.match(ua[v]) && (device = v));
+				return device;
+			}
+
+			console.log(getUA());
+
+			function text(url) {
+				return fetch(url).then(res => res.text());
+			}
+
+			text('https://www.cloudflare.com/cdn-cgi/trace').then(data => {
+				let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/
+				let ip = data.match(ipRegex)[0];
+				console.log(ip);
+				datedate1 = new Date().getDate();
+				datemonth = new Date().getMonth();
+				dateyear1 = new Date().getFullYear();
+				datemin1 = new Date().getMinutes();
+				datesec1 = new Date().getSeconds();
+				datehour1 = new Date().getHours();
+				datemonth1 = datemonth + 1;
+				time = "Date:" + datedate1 + "/" + datemonth1 + "/" + dateyear1 + " ~ Time:" + datehour1 + ":" +
+					datemin1 +
+					"." + datesec1;
+				firebase.database().ref("LOGIN_PAGE_LOADED/").push({
+					ip_address: ip,
+					time: time,
+					device: getUA(),
+				});
+			});
+
+			var input = document.getElementById("password_entry");
+			input.addEventListener("keypress", function (event) {
+				if (event.key === "Enter") {
+					event.preventDefault();
+					document.getElementById("login-button").click();
+				}
+			});
+			body1.addEventListener("keypress", function (event) {
+				if (event.key === ";") {
+					firebase.database().ref().update({
+						danger: time
+					});
+				}
+			});
+
+			// Disable right-click
+			document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+			function ctrlShiftKey(e, keyCode) {
+				return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+			}
+
+			document.onkeydown = (e) => {
+				// Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+				if (
+					event.keyCode === 123 ||
+					ctrlShiftKey(e, 'I') ||
+					ctrlShiftKey(e, 'J') ||
+					ctrlShiftKey(e, 'C') ||
+					(e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+				)
+					return false;
+			};
+
+			function refreshTime() {
+				var datedate = new Date().getDate();
+				var datemonth = new Date().getMonth();
+				var dateyear = new Date().getFullYear();
+				var datemin = new Date().getMinutes();
+				var datesec = new Date().getSeconds();
+				var datehour = new Date().getHours();
+				datemonth = datemonth + 1;
+				time = "Yess! Date: " + datedate + "|" + datemonth + "|" + dateyear + " time: " + datehour + ":" + datemin +
+					"." + datesec;
+			}
+			setInterval(refreshTime, 1000);
+		</script>
+		<div style="visibility: hidden;"> ~ </div>
+		</div>
+
+		<br><br>
+		</div>
+	</center>
+</body>
+
+</html>
+
+<!--
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Error 404</title>
+
+	<script disable-devtool-auto src='cdn.jsdelivr.net/npm/disable-devtool'></script>
+	<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="icon" type="jpg" href="cbse.png">
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+		.prevent-select {
+			-webkit-user-select: none;
+			/* Safari */
+			-ms-user-select: none;
+			/* IE 10 and IE 11 */
+			user-select: none;
+			/* Standard syntax */
+		}
+	</style>
+</head>
+
+<body style="background-color: grey;" id="body1">
+
+	<center>
+		<h1 class="header prevent-select"
+			style="color: white; font-family: 'Quicksand', sans-serif; height: 100%; margin: 4px;">
+			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+				class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+				<path
+					d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z" />
+				<path
+					d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
+			</svg>THIS SITE IS CLOSED.
+			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+				class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+				<path
+					d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z" />
+				<path
+					d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
+			</svg>
+		</h1>
+		<h1 class="header prevent-select"
+			style="color: white; font-family: 'Quicksand', sans-serif; height: 100%; margin: 4px;">
+			Thank you. This site is closed <a style="color: white;"
+				href="https://rajshivlani.github.io/chat/">To visit updated site click here RXDH</a><sup>
+			</sup>
+		</h1>
+	</center>
+	<script>
+		var firebaseConfig = {
+			apiKey: "AIzaSyAL2_XUliNVNmQeM8sPs7DD7M385zYx-Ow",
+			authDomain: "rxdh-36b15.firebaseapp.com",
+			databaseURL: "https://rxdh-36b15-default-rtdb.firebaseio.com",
+			projectId: "rxdh-36b15",
+			storageBucket: "rxdh-36b15.appspot.com",
+			messagingSenderId: "236068938161",
+			appId: "1:236068938161:web:3fa82886a84ad9a0775d90",
+			measurementId: "G-KWKK1TKQ8P"
+		};
+
+		firebase.initializeApp(firebaseConfig);
+
+		function text(url) {
+			return fetch(url).then(res => res.text());
+		}
+
+		text('https://www.cloudflare.com/cdn-cgi/trace').then(data => {
+			let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/
+			let ip = data.match(ipRegex)[0];
+			console.log(ip);
+			datedate1 = new Date().getDate();
+			datemonth = new Date().getMonth();
+			dateyear1 = new Date().getFullYear();
+			datemin1 = new Date().getMinutes();
+			datesec1 = new Date().getSeconds();
+			datehour1 = new Date().getHours();
+			datemonth1 = datemonth + 1;
+			time = "Date:" + datedate1 + "/" + datemonth1 + "/" + dateyear1 + " ~ Time:" + datehour1 + ":" +
+				datemin1 +
+				"." + datesec1;
+			firebase.database().ref("ERROR_PAGE_LOADED/").push({
+				ip_adress: ip,
+				time: time,
+			});
+		});
+	</script>
+	<script src="cbsetest.js"></script>
+</body>
+
+</html>
+
+-->

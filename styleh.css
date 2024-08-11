@@ -1,0 +1,39 @@
+#h1p {
+    width: 25%;
+    height: 25%;
+    resize: horizontal;
+}
+
+body {
+    background-color: magenta;
+    overflow-x: hidden;
+
+}
+
+body {
+    height: 100%;
+    margin: 0%;
+    padding: 0;
+}
+
+.header {
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 45px;
+    letter-spacing: 10px;
+    margin-top: 80px;
+}
+
+#back {
+    font-size: 20px;
+    float: left;
+    position: fixed;
+    top: 2%;
+    left: 2%;
+}
+
+.images {
+    float: left;
+    height: 25%;
+    width: 25%;
+}

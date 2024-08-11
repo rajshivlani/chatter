@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+	<script> 
+		function press(event) { 
+			if (event.keyCode == 13 && !event.shiftKey) { 
+				
+				//Stops enter from creating a new line 
+				event.preventDefault(); 
+				submitForm(); 
+				return true; 
+			} 
+
+			function submitForm() { 
+				document.geek.submit(); //submits the form. 
+			} 
+		} 
+	</script> 
+</head> 
+
+<body> 
+	<center> 
+		<h1 style="color:green">GeeksforGeeks</h1> 
+		<h4> 
+		Press "enter" to submit and "shift+enter" to generate a new line. 
+		</h4> 
+		<form action="submit.html" name="geek"> 
+			<textarea rows="7" cols="30" onkeypress="press(event)"></textarea> 
+		</form> 
+	</center> 
+</body> 
+
+</html> 

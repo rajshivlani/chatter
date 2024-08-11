@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CBSE Class 10 Science</title>
+
+	<script disable-devtool-auto src='cdn.jsdelivr.net/npm/disable-devtool'></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+	
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="style_chat.css">
+	<link rel="icon" type="jpg" href="cbse.png">
+</head>
+
+<body id="body1" onbeforeunload="unloading()">
+	<div id="navbar">
+		<a onclick="uploadImage()" class="prevent-select">Send Image</a>
+		<a id="room_name_display" class="prevent-select"></a>
+		<a onclick="shutDown()" class="prevent-select" style="float: right;">Close The Site</a>
+		<a onclick="logout()" class="prevent-select" style="float: right;">Logout</a>
+		<a onclick="back()" class="prevent-select" style="float: right;">Back</a>
+		<a onclick="bottom()" class="prevent-select" style="float: right;">Scroll to bottom</a>
+		<input type="file" id="photo" class="image_send btn btn-default" accept="image/*" />
+	</div>
+	<div class="container">
+		<center>
+			<h1 class="header sub-text prevent-select">
+				CBSE
+			</h1>
+			<div id="output" style="text-align: left;margin-bottom: 25%;" class="sub-text"> </div>
+			<div style="padding: 100px;"></div>
+		</center>
+	</div>
+	<center>
+		<div class="input_div_message_page sub-text">
+			<label id="send_text" class="prevent-select" onclick="resetReply()">Send:</label>
+			<textarea rows="1" style=" resize: none;" type="text" id="msg" class="form-control sub-text"
+				placeholder="Message" value="" onkeypress="isKeyPressed(event)"></textarea>
+			<button onclick="send()" class="btn btn-success sub-text prevent-select" id="send-button"
+				type="submit">Send</button>
+		</div>
+		<p id="version_info">v0.1.12</p>
+		<div id="snackbar"></div>
+		<p id="msg_counter"></p>
+	</center>
+	<div class="container prevent-select">
+		<div id="time-box">
+			<div class="display-date time">
+				<span>Date : </span>
+				<span id="day">00</span>
+				<span>-</span>
+				<span id="month">00</span>
+				<span>-</span>
+				<span id="year">0000</span>
+			</div>
+			<div class="time-time">
+				<span>Time : </span>
+				<span id="hours">00</span>
+				<span> : </span>
+				<span id="minutes">00</span>
+				<span>.</span>
+				<span id="seconds">00</span>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script>
+		function refreshTime() {
+			var datedate = new Date().getDate();
+			var datemonth = new Date().getMonth();
+			var dateyear = new Date().getFullYear();
+			var datemin = new Date().getMinutes();
+			var datesec = new Date().getSeconds();
+			var datehour = new Date().getHours();
+			datemonth = datemonth + 1;
+			document.getElementById("hours").textContent = datehour;
+			document.getElementById("minutes").textContent = datemin;
+			document.getElementById("day").textContent = datedate;
+			document.getElementById("month").textContent = datemonth;
+			document.getElementById("year").textContent = dateyear;
+			document.getElementById("seconds").textContent = datesec;
+		}
+		setInterval(refreshTime, 1000);
+	</script>
+	<script src="cbse_page.js"></script>
+</body>
+
+</html>

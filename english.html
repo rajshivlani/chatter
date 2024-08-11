@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CBSE English Class 10th</title>
+	
+	<script disable-devtool-auto src='cdn.jsdelivr.net/npm/disable-devtool'></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+	
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="style_room.css">
+	<link rel="icon" type="jpg" href="cbse.png">
+</head>
+
+<body class="prevent-select">
+	<div class="container form-group" onclick="onclick">
+		<div class="top"></div>
+		<div class="bottom"></div>
+		<div class="container">
+			<button id="logout" onclick="logout();" class="sub-text  btn btn-danger ">Logout</button>
+			<button id="back" onclick="back();" class="sub-text btn btn-danger">Back</button>
+			<button id="login_recoreder_redirect" onclick="window.open('hindi.html')"
+				class="sub-text btn btn-danger">Login Recorder</button>
+
+			<center>
+				<h1 class="header sub-text">
+					CBSE
+				</h1>
+				<h3 id="user_name" class="color_white sub-text"></h3>
+				<div class="form-group input_div_room_page sub-text">
+					<label style="color: white;">Add Room:</label>
+					<input type="text" id="room_name" class="form-control" placeholder="Room Name">
+				</div>
+				<button onclick="addRoom();" class="btn btn-success sub-text" id="add_room" type="submit">Add
+					Room</button>
+				<h3 class="color_white sub-text">Top Rooms</h3>
+				<div id="output"></div>
+			</center>
+		</div>
+
+		<div class="container">
+			<div id="time-box">
+				<div class="display-date time">
+					<span>Date : </span>
+					<span id="day">00</span>
+					<span>-</span>
+					<span id="month">00</span>
+					<span>-</span>
+					<span id="year">0000</span>
+				</div>
+				<div class="time-time">
+					<span>Time : </span>
+					<span id="hours">00</span>
+					<span> : </span>
+					<span id="minutes">00</span>
+					<span>.</span>
+					<span id="seconds">00</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		function refreshTime() {
+			var datedate = new Date().getDate();
+			var datemonth = new Date().getMonth();
+			var dateyear = new Date().getFullYear();
+			var datemin = new Date().getMinutes();
+			var datesec = new Date().getSeconds();
+			var datehour = new Date().getHours();
+			datemonth = datemonth + 1;
+			document.getElementById("hours").textContent = datehour;
+			document.getElementById("minutes").textContent = datemin;
+			document.getElementById("day").textContent = datedate;
+			document.getElementById("month").textContent = datemonth;
+			document.getElementById("year").textContent = dateyear;
+			document.getElementById("seconds").textContent = datesec;
+		}
+		setInterval(refreshTime, 1000);
+	</script>
+	<script src="cbse_room.js"></script>
+</body>
+
+</html>

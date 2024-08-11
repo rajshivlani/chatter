@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CBSE Class 10 Hindi</title>
+
+	<script disable-devtool-auto src='cdn.jsdelivr.net/npm/disable-devtool'></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script disable-devtool-auto src='cdn.jsdelivr.net/npm/disable-devtool'></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style_chat_logins.css">
+    <link rel="icon" type="jpg" href="cbse.png">
+</head>
+
+<body id="body1">
+    <button id="logout" onclick="logout();" class="sub-text btn btn-danger prevent-select">Logout</button>
+    <center>
+        <h1 class="header sub-text prevent-select">
+            CBSE
+        </h1>
+        <div id="output" style="text-align: left;margin-bottom: 25%;" class="sub-text "> </div>
+    </center>
+    </div>
+    <div class="container prevent-select">
+        <div id="time-box">
+            <div class="display-date time">
+                <span>Date : </span>
+                <span id="day">00</span>
+                <span>-</span>
+                <span id="month">00</span>
+                <span>-</span>
+                <span id="year">0000</span>
+            </div>
+            <div class="time-time">
+                <span>Time : </span>
+                <span id="hours">00</span>
+                <span> : </span>
+                <span id="minutes">00</span>
+                <span>.</span>
+                <span id="seconds">00</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        
+        function refreshTime() {
+            var datedate = new Date().getDate();
+            var datemonth = new Date().getMonth();
+            var dateyear = new Date().getFullYear();
+            var datemin = new Date().getMinutes();
+            var datesec = new Date().getSeconds();
+            var datehour = new Date().getHours();
+            datemonth = datemonth + 1;
+            document.getElementById("hours").textContent = datehour;
+            document.getElementById("minutes").textContent = datemin;
+            document.getElementById("day").textContent = datedate;
+            document.getElementById("month").textContent = datemonth;
+            document.getElementById("year").textContent = dateyear;
+            document.getElementById("seconds").textContent = datesec;
+        }
+        setInterval(refreshTime, 1000);
+    </script>
+    <script src="cbse_logins.js"></script>
+</body>
+
+</html>

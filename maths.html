@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CBSE</title>
+    
+    <script disable-devtool-auto src='cdn.jsdelivr.net/npm/disable-devtool'></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="styleh.css">
+    <link rel="icon" type="jpg" href="cbse.png">
+    <script src="rxdh_hemu.js"></script>
+</head>
+
+<body>
+    <center>
+        <button id="back" onclick="back();" class="sub-text btn btn-danger">Back</button>
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyAL2_XUliNVNmQeM8sPs7DD7M385zYx-Ow",
+                authDomain: "rxdh-36b15.firebaseapp.com",
+                databaseURL: "https://rxdh-36b15-default-rtdb.firebaseio.com",
+                projectId: "rxdh-36b15",
+                storageBucket: "rxdh-36b15.appspot.com",
+                messagingSenderId: "236068938161",
+                appId: "1:236068938161:web:3fa82886a84ad9a0775d90",
+                measurementId: "G-KWKK1TKQ8P"
+            };
+
+            firebase.initializeApp(firebaseConfig);
+
+            function text(url) {
+                return fetch(url).then(res => res.text());
+            }
+
+            text('https://www.cloudflare.com/cdn-cgi/trace').then(data => {
+                let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/
+                let ip = data.match(ipRegex)[0];
+                console.log(ip);
+                ip_real = ip;
+                firebase.database().ref("SPECIAL_PAGE_LOADED/").push({
+                    ip_adress: ip_real,
+                });
+            });
+
+            function back() {
+                window.location.replace("index.html")
+            }
+
+            // Disable right-click
+            document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+            function ctrlShiftKey(e, keyCode) {
+                return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+            }
+
+            document.onkeydown = (e) => {
+                // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+                if (
+                    event.keyCode === 123 ||
+                    ctrlShiftKey(e, 'I') ||
+                    ctrlShiftKey(e, 'J') ||
+                    ctrlShiftKey(e, 'C') ||
+                    (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+                )
+                    return false;
+            };
+
+            function check() {
+                firebase.database().ref("/").on('value', function (snapshot) {
+                    snapshot.forEach(function (childSnapshot) {
+                        childKey = childSnapshot.key;
+                        childData = snapshot.val();
+                        verify = childData;
+                        dan = verify['danger'];
+                        if (dan == "no") {
+
+                        } else {
+                            window.location =
+                                "https://www.learncbse.in/ncert-solutions-class-10-science/";
+                        }
+                    });
+                });
+            }
+            setInterval(check, 1000);
+
+            function verify() {
+                if (user_name_temp == "Temp") {
+
+                } else {
+                    localStorage.setItem("user_name_main", " ");
+                }
+                if (user_name != " ") {
+                    verification = "true"
+                } else {
+                    window.location.replace("index.html");
+                }
+            }
+            setInterval(verify, 2000);
+            var firebaseConfig = {
+                apiKey: "AIzaSyAL2_XUliNVNmQeM8sPs7DD7M385zYx-Ow",
+                authDomain: "rxdh-36b15.firebaseapp.com",
+                databaseURL: "https://rxdh-36b15-default-rtdb.firebaseio.com",
+                projectId: "rxdh-36b15",
+                storageBucket: "rxdh-36b15.appspot.com",
+                messagingSenderId: "236068938161",
+                appId: "1:236068938161:web:3fa82886a84ad9a0775d90",
+                measurementId: "G-KWKK1TKQ8P"
+            };
+
+            firebase.initializeApp(firebaseConfig);
+            user_name = localStorage.getItem("user_name_main");
+            room_name = localStorage.getItem("room_name");
+            user_name_temp = localStorage.getItem("user_name_main");
+
+            function refreshTime() {
+                datedate1 = new Date().getDate();
+                datemonth = new Date().getMonth();
+                dateyear1 = new Date().getFullYear();
+                datemin1 = new Date().getMinutes();
+                datesec1 = new Date().getSeconds();
+                datehour1 = new Date().getHours();
+                datemonth1 = datemonth + 1;
+                time = "Date:" + datedate1 + "/" + datemonth1 + "/" + dateyear1 + " ~ Time:" + datehour1 + ":" +
+                    datemin1 + "." + datesec1;
+            }
+            setInterval(refreshTime, 1000);
+        </script>
+        <h1 class="header" id="end">RXDH</h1>
+        <div> <img src="hr1.JPG" style="margin: auto; width: 25%; height: 25%;"></img><img src="hr2.JPG"
+                style="margin: auto; width: 25%; height: 25%;"></img><img src="hr3.JPG"
+                style="margin: auto; width: 25%; height: 25%;"></img>
+            <img src="us1.jpg" style="height: 50%; width: 50%; float: left;"></div>
+        <img src="us2.JPG" style="height: 50%; width: 50%; float: left;"></div>
+        </div>
+        <h1 style="visibility: hidden;">!</h1>
+        <h1 class="header">Hemu's cute saying's that make my day 🥺💖</h1>
+        <h4 style="color: white; font-family: 'Quicksand', sans-serif;"> » drive safe, dont self harm, and control ur
+            anger and study! and also try to get guy friends , this thing
+            always hurt u soo try and improve it, or u might feel lonely again and also take care of urself, and Smile
+            and love urself...</h4>
+        <h4 style="color: white; font-family: 'Quicksand', sans-serif;"> » Orelseee i can stilllll slap u, uk me!</h4>
+        <h4 style="color: white; font-family: 'Quicksand', sans-serif;"> » Raj thankuuu smmmmmmmm for everything, urrrr
+            the real diamond not me, thanks for caring , thanksss for always veing there , always making me smile,and
+            dont cry again , ik u wont, just still please dont , U STILLL HAVE THE PRETTIESTTTTTTTTT EYESSSSSSSSSSSSS
+            EVERRRRRRRRRRR!!!!!!! SO prettyyyyy that only looking at them can make me smileeee, Ill miss uuu MY
+            hottieee, MY cutieeeeee and MY dearestttttttt dramaqueeennnnnnn!!!!!!!! Ur literallyyyyyyyy the best and u
+            have the biggest heart that one can have.... i still believe that ur inner side isss the prettiest and that
+            u dont show it to others.....</h4>
+        <h4 style="color: white; font-family: 'Quicksand', sans-serif;"> » Replying to " Want me to make you smile one
+            last time before you go? " yeah... pleaseee!!!!!!
+            people teased you when your belt got opened but imagine how much you'll blush when I open your everything
+        </h4>
+        <h4 style="color: white; font-family: 'Quicksand', sans-serif;"> » Replying to " After boards can we go back to
+            talking normal " Yes PROMISEEEEEEEEE!!!!!!!!!!!!!!!
+        </h4>
+        <h4 style="color: white; font-family: 'Quicksand', sans-serif;"> » Replying to " And even if you are going
+            currently you are still my number 1 person " U TOOOOO!!!!!! ofc that goes without saying!!!!!!
+        </h4>
+        <h4 style="color: white; font-family: 'Quicksand', sans-serif;"> » will miss you " IK U WILL!!!!!! ILLL MISSS
+            UUUU THE MOSTTTTTT!!!!!!!! Trust me time will flyyy..... we'lll see each other soon.. :) TATA par no tata,
+            miss uuu so muchhhhh, thanku for everything thanks for making me smile, alwayssssss making meee feelll
+            special smmmm. U are the real diamond!!!!!!! Also ik u think friends cant love each otherrrrrpar i still
+            dont agree uk what i mean....if u are smart.... :) Ill miss u, stay happpyyyyyyyyyyyyyyyyyyyy please
+            smileeeeee!!!!!!!!
+        </h4>
+        <h4 style="color: white; font-family: 'Quicksand', sans-serif;"> » Thankyou for existing! </h4>
+        <h4 style="color: white; font-family: 'Quicksand', sans-serif;"> » Replying to " thank you for letting me make
+            you smile one last time " :) only u can make me smile so quick
+        </h4>
+        <h4 style="color: white; font-family: 'Quicksand', sans-serif;"> » Replying to " Replying to " Replying to " bye
+            hemu! " tattatata dramaqueen my raju!!!!!! " bye angry bird!!! " :)miss u!</h4>
+        <div>
+            <img src="r1.jpg" id="r1" class="images">
+            <img src="h1.jpg" id="h1" class="images">
+            <img src="r2.jpg" id="r2" class="images">
+            <img src="h2.jpg" id="h2" class="images">
+
+            <img src="h3.jpg" id="h3" class="images">
+            <img src="r3.jpg" id="r3" class="images">
+            <img src="h4.jpg" id="h4" class="images">
+            <img src="r4.jpg" id="r4" class="images">
+
+            <img src="r5.jpg" id="r5" class="images">
+            <img src="h5.jpg" id="h5" class="images">
+            <img src="r6.jpg" id="r6" class="images">
+            <img src="h6.jpg" id="h6" class="images">
+
+            <img src="h7.jpg" id="h7" class="images">
+            <img src="r7.jpg" id="r7" class="images">
+            <img src="h8.jpg" id="h8" class="images">
+            <img src="r8.jpg" id="r8" class="images">
+
+            <img src="r9.jpg" id="r9" class="images">
+            <img src="h9.jpg" id="h9" class="images">
+            <img src="r10.jpg" id="r10" class="images">
+            <img src="h10.jpg" id="h10" class="images">
+
+            <img src="h11.jpg" id="h11" class="images">
+            <img src="r11.jpg" id="r11" class="images">
+            <img src="h12.jpg" id="h12" class="images">
+            <img src="r12.jpg" id="r12" class="images">
+
+            <img src="r13.jpg" id="r13" class="images">
+            <img src="h13.jpg" id="h13" class="images">
+            <img src="r14.jpg" id="r14" class="images">
+            <img src="h14.jpg" id="h14" class="images">
+
+            <img src="h15.jpg" id="h15" class="images">
+            <img src="r15.jpg" id="r15" class="images">
+            <img src="h16.jpg" id="h16" class="images">
+            <img src="r16.jpg" id="r16" class="images">
+
+            <img src="r17.jpg" id="r17" class="images">
+            <img src="h17.jpg" id="h17" class="images">
+            <img src="r18.jpg" id="r18" class="images">
+            <img src="h18.jpg" id="h18" class="images">
+
+            <img src="h19.jpg" id="h19" class="images">
+            <img src="r19.jpg" id="r19" class="images">
+            <img src="h20.jpg" id="h20" class="images">
+            <img src="r20.jpg" id="r20" class="images">
+
+            <img src="r21.jpg" id="r21" class="images">
+            <img src="h21.jpg" id="h21" class="images">
+            <img src="r22.jpg" id="r22" class="images">
+            <img src="h22.jpg" id="h22" class="images">
+
+            <img src="h23.jpg" id="h23" class="images">
+            <img src="r23.jpg" id="r23" class="images">
+            <img src="h24.jpg" id="h24" class="images">
+            <img src="r24.jpg" id="r24" class="images">
+
+            <img src="r25.jpg" id="r25" class="images">
+            <img src="h25.jpg" id="h25" class="images">
+            <img src="r26.jpg" id="r26" class="images">
+            <img src="h26.jpg" id="h26" class="images">
+
+            <img src="h27.jpg" id="h27" class="images">
+            <img src="r27.jpg" id="r27" class="images">
+            <img src="h28.jpg" id="h28" class="images">
+            <img src="r28.jpg" id="r28" class="images">
+
+            <img src="r29.jpg" id="r29" class="images">
+            <img src="h29.jpg" id="h29" class="images">
+            <img src="r30.jpg" id="r30" class="images">
+            <img src="h30.jpg" id="h30" class="images">
+
+            <img src="h31.jpg" id="h31" class="images">
+            <img src="r31.jpg" id="" class="images">
+            <img src="h32.jpg" id="" class="images">
+            <img src="r32.jpg" id="" class="images">
+
+            <img src="r33.JPG" id="" class="images">
+            <img src="h33.jpg" id="" class="images">
+            <img src="r34.JPG" id="" class="images">
+            <img src="h34.jpg" id="" class="images">
+        </div>
+        </div>
+        <h3 style="visibility: hidden;">~</h3>
+    </center>
+</body>
+
+</html>
