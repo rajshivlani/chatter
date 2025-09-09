@@ -1,12 +1,11 @@
 var firebaseConfig = {
-  apiKey: "AIzaSyAL2_XUliNVNmQeM8sPs7DD7M385zYx-Ow",
-  authDomain: "rxdh-36b15.firebaseapp.com",
-  databaseURL: "https://rxdh-36b15-default-rtdb.firebaseio.com",
-  projectId: "rxdh-36b15",
-  storageBucket: "rxdh-36b15.appspot.com",
-  messagingSenderId: "236068938161",
-  appId: "1:236068938161:web:3fa82886a84ad9a0775d90",
-  measurementId: "G-KWKK1TKQ8P"
+  apiKey: "AIzaSyB6r14nTrVzeD-ecbb61euXbwbwAiWr8o4",
+  authDomain: "chatter-fd2a3.firebaseapp.com",
+  projectId: "chatter-fd2a3",
+  storageBucket: "chatter-fd2a3.firebasestorage.app",
+  messagingSenderId: "1037281874763",
+  appId: "1:1037281874763:web:0f1c464a7f4c1461810ece",
+  measurementId: "G-25JYQYJVGE"
 };
 
 firebase.initializeApp(firebaseConfig);

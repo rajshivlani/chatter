@@ -1,28 +1,15 @@
-//VERSION
-let version_present = "0.1.11";
-
 //firebase loading
 var firebaseConfig = {
-  apiKey: "AIzaSyAL2_XUliNVNmQeM8sPs7DD7M385zYx-Ow",
-  authDomain: "rxdh-36b15.firebaseapp.com",
-  databaseURL: "https://rxdh-36b15-default-rtdb.firebaseio.com",
-  projectId: "rxdh-36b15",
-  storageBucket: "rxdh-36b15.appspot.com",
-  messagingSenderId: "236068938161",
-  appId: "1:236068938161:web:3fa82886a84ad9a0775d90",
-  measurementId: "G-KWKK1TKQ8P"
+  apiKey: "AIzaSyA0uBFMuTCBGRgI5ufcjxvfEAqfwk7W1as",
+  authDomain: "chatter-5d4af.firebaseapp.com",
+  projectId: "chatter-5d4af",
+  databaseURL: "https://chatter-5d4af-default-rtdb.firebaseio.com/",
+  storageBucket: "chatter-5d4af.firebasestorage.app",
+  messagingSenderId: "922494418234",
+  appId: "1:922494418234:web:037840d99158bc41212403",
+  measurementId: "G-E0M390JQW0"
 };
 
-//var firebaseConfig = {
-// apiKey: "AIzaSyD4067qYAl5V7vx-lDA70bV5l2RgJpeiKc",
-// authDomain: "test-2973c.firebaseapp.com",
-// databaseURL: "https://test-2973c-default-rtdb.firebaseio.com",
-// projectId: "test-2973c",
-//storageBucket: "test-2973c.appspot.com",
-//messagingSenderId: "347370851293",
-//appId: "1:347370851293:web:965ae0f9ae053e9f894434",
-//measurementId: "G-9Z62YYHZQJ"
-//};
 firebase.initializeApp(firebaseConfig);
 
 //predefined value/variables setting
@@ -35,6 +22,7 @@ let unloading_yes = "true";
 let log_out = "true";
 let message_count = 0;
 document.getElementById("room_name_display").innerHTML = room_name;
+
 //time
 function refreshTime() {
   datedate1 = new Date().getDate();
@@ -56,19 +44,12 @@ function send() {
   //Commands
   if (msg == "/reset_database") {
     firebase.database().ref().remove();
-    firebase.database().ref().update({
-      danger: "no",
-    });
     document.getElementById("msg").value = "";
   } else if (msg == "/reset") {
     reset();
   } else if (msg == "/bye") {
     firebase.database().ref("/").remove();
     document.getElementById("msg").value = "";
-    firebase.database().ref().update({
-      danger: "no",
-      version: version_present
-    });
     sneakLogout();
   } else if (msg == "/get_message_count") {
     msg_count_check();
@@ -123,7 +104,7 @@ function send() {
 
 
 //recieving data and displaying it
-getData();
+setInterval(getData, 1000);
 
 function getData() {
   firebase.database().ref("Rooms/" + room_name).orderByChild("timestamp").on('value', function (snapshot) {
@@ -255,6 +236,7 @@ function reset() {
   firebase.database().ref("Rooms/" + room_name).update({
     message_count: msg_count
   });
+  document.getElementById("msg").value = "";
 };
 
 function isKeyPressed(event) {
@@ -267,14 +249,6 @@ function isKeyPressed(event) {
     document.getElementById("send-button").click();
   }
 }
-
-//closing down the site
-function shutDown() {
-  firebase.database().ref().update({
-    danger: time,
-    version: version_present
-  });
-};
 
 //message count
 function msg_count_check() {
@@ -294,74 +268,6 @@ function msg_count_check() {
   });
 }
 msg_count_check();
-
-//emergency panic button
-body1.addEventListener("keypress", function (event) {
-  if (event.key === ";") {
-    window.location.replace("https://www.learncbse.in/ncert-solutions-class-10-science/");
-    firebase.database().ref("Rooms/" + room_name).remove();
-    firebase.database().ref("Rooms/" + room_name).push({
-      name: "SERVER",
-      message: user_name + " has been logged out using ';' key",
-      date: "Date: " + datedate1 + " - " + datemonth1 + " - " + dateyear1,
-      time: "Time : " + datehour1 + " : " + datemin1 + " . " + datesec1,
-
-    });
-    msg_count = 0;
-    msg_count0 = 0;
-    firebase.database().ref("Rooms/" + room_name).update({
-      message_count: msg_count
-    });
-  }
-});
-
-//DISABLING ALL DEVELOPER TOOLS SHORTCUTS
-// Disable right-click
-document.addEventListener('contextmenu', (e) => e.preventDefault());
-
-function ctrlShiftKey(e, keyCode) {
-  return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
-};
-document.onkeydown = (e) => {
-  // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
-  if (
-    event.keyCode === 123 ||
-    ctrlShiftKey(e, 'I') ||
-    ctrlShiftKey(e, 'J') ||
-    ctrlShiftKey(e, 'C') ||
-    (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
-  )
-    return false;
-};
-
-//chechking if the site is allowed to use by users
-function check() {
-  firebase.database().ref("/").on('value', function (snapshot) {
-    snapshot.forEach(function (childSnapshot) {
-      childKey = childSnapshot.key;
-      childData = snapshot.val();
-      verify = childData;
-      dan = verify['danger'];
-      version = verify['version'];
-      if (dan == "no") {
-
-      } else {
-        window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
-      }
-      if (version != version_present) {
-        clearCache()
-        unloading_yes = "false";
-        log_out = "false";
-        localStorage.setItem("user_name_main", user_name_temp);
-
-        function clearCache() {
-          location.reload(true);
-        }
-      }
-    });
-  });
-}
-setInterval(check, 1000)
 
 //verifying a valid login
 function verify() {
