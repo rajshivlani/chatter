@@ -1,11 +1,12 @@
 var firebaseConfig = {
-  apiKey: "AIzaSyB6r14nTrVzeD-ecbb61euXbwbwAiWr8o4",
-  authDomain: "chatter-fd2a3.firebaseapp.com",
-  projectId: "chatter-fd2a3",
-  storageBucket: "chatter-fd2a3.firebasestorage.app",
-  messagingSenderId: "1037281874763",
-  appId: "1:1037281874763:web:0f1c464a7f4c1461810ece",
-  measurementId: "G-25JYQYJVGE"
+  apiKey: "AIzaSyA0uBFMuTCBGRgI5ufcjxvfEAqfwk7W1as",
+  authDomain: "chatter-5d4af.firebaseapp.com",
+  projectId: "chatter-5d4af",
+  databaseURL: "https://chatter-5d4af-default-rtdb.firebaseio.com/",
+  storageBucket: "chatter-5d4af.firebasestorage.app",
+  messagingSenderId: "922494418234",
+  appId: "1:922494418234:web:037840d99158bc41212403",
+  measurementId: "G-E0M390JQW0"
 };
 
 firebase.initializeApp(firebaseConfig);

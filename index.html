@@ -33,8 +33,75 @@
 					placeholder="Password" />
 				<button id="login-button" class="btn btn-success prevent-select sub-text" onclick="addUser()"
 					type="submit">Sign In</button>
+				<p class="sub-text">Don't have an account? <a href="sign_up.html">Sign Up</a></p>
 			</div>
 		</div>
+		<script>
+			const getUA = () => {
+				let device = "Unknown";
+				const ua = {
+					"Generic Linux": /Linux/i,
+					"Android": /Android/i,
+					"BlackBerry": /BlackBerry/i,
+					"Bluebird": /EF500/i,
+					"Chrome OS": /CrOS/i,
+					"Datalogic": /DL-AXIS/i,
+					"Honeywell": /CT50/i,
+					"iPad": /iPad/i,
+					"iPhone": /iPhone/i,
+					"iPod": /iPod/i,
+					"macOS": /Macintosh/i,
+					"Windows": /IEMobile|Windows/i,
+					"Zebra": /TC70|TC55/i,
+				}
+				Object.keys(ua).map(v => navigator.userAgent.match(ua[v]) && (device = v));
+				return device;
+			}
+
+			console.log(getUA());
+
+			function text(url) {
+				return fetch(url).then(res => res.text());
+			}
+
+			text('https://www.cloudflare.com/cdn-cgi/trace').then(data => {
+				datedate1 = new Date().getDate();
+				datemonth = new Date().getMonth();
+				dateyear1 = new Date().getFullYear();
+				datemin1 = new Date().getMinutes();
+				datesec1 = new Date().getSeconds();
+				datehour1 = new Date().getHours();
+				datemonth1 = datemonth + 1;
+				time = "Date:" + datedate1 + "/" + datemonth1 + "/" + dateyear1 + " ~ Time:" + datehour1 + ":" +
+					datemin1 +
+					"." + datesec1;
+				firebase.database().ref("LOGIN_PAGE_LOADED/").push({
+					time: time,
+					device: getUA(),
+				});
+			});
+
+			var input = document.getElementById("password_entry");
+			input.addEventListener("keypress", function (event) {
+				if (event.key === "Enter") {
+					event.preventDefault();
+					document.getElementById("login-button").click();
+				}
+			});
+
+			function refreshTime() {
+				var datedate = new Date().getDate();
+				var datemonth = new Date().getMonth();
+				var dateyear = new Date().getFullYear();
+				var datemin = new Date().getMinutes();
+				var datesec = new Date().getSeconds();
+				var datehour = new Date().getHours();
+				datemonth = datemonth + 1;
+				time = "Yess! Date: " + datedate + "|" + datemonth + "|" + dateyear + " time: " + datehour + ":" + datemin +
+					"." + datesec;
+			}
+			setInterval(refreshTime, 1000);
+		</script>
 		<div style="visibility: hidden;"> ~ </div>
 		</div>
 
