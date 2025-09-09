@@ -35,38 +35,6 @@
 					type="submit">Sign In</button>
 			</div>
 		</div>
-		<script>
-			function text(url) {
-				return fetch(url).then(res => res.text());
-			}
-
-			var input = document.getElementById("password_entry");
-			input.addEventListener("keypress", function (event) {
-				if (event.key === "Enter") {
-					event.preventDefault();
-					document.getElementById("login-button").click();
-				}
-			});
-
-			// Disable right-click
-			document.addEventListener('contextmenu', (e) => e.preventDefault());
-
-			function ctrlShiftKey(e, keyCode) {
-				return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
-			}
-
-			document.onkeydown = (e) => {
-				// Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
-				if (
-					event.keyCode === 123 ||
-					ctrlShiftKey(e, 'I') ||
-					ctrlShiftKey(e, 'J') ||
-					ctrlShiftKey(e, 'C') ||
-					(e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
-				)
-					return false;
-			};
-		</script>
 		<div style="visibility: hidden;"> ~ </div>
 		</div>
 
