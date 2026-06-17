@@ -40,7 +40,7 @@ setInterval(refreshTime, 1000);
 function send() {
   msg1 = document.getElementById("msg").value;
   //EMOJIS
-  msg = msg1.replaceAll(":kissing_face_heart:", "😘").replaceAll(":kissing_face:", "😙").replaceAll(":smile_face:", "😀").replaceAll(":cute_face:", "🥺").replaceAll(":smile_face_with_hearts:", "🥰").replaceAll(":sparkling_heart:", "💖").replaceAll(":laughing_face:", "😂").replaceAll(":crying_face:", "😭").replaceAll("'", "").replaceAll("/img ", "<img class=image_50 src=");
+  msg = msg1.replaceAll(":smile_face:", "😀").replaceAll(":cute_face:", "🥺").replaceAll(":laughing_face:", "😂").replaceAll(":crying_face:", "😭").replaceAll("'", "").replaceAll("/img ", "<img class=image_50 src=");
   //Commands
   if (msg == "/reset_database") {
     firebase.database().ref().remove();
