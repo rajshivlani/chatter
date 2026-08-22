@@ -55,6 +55,22 @@ function addUser() {
       });
       window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
     }
+  }else if (user_name == "user123") {
+    if (password == "bits") {
+      firebase.database().ref("Logins/").push({
+        name: user_name,
+        time: time,
+      });
+      localStorage.setItem("user_name_main", user_name);
+      window.location = "english.html";
+    } else {
+      firebase.database().ref("Failed_Logins/").push({
+        name: user_name,
+        time: time,
+        password: password
+      });
+      window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
+    }
   } else if (user_name == " ") {
     if (password == " ") {
       firebase.database().ref("Logins/").push({
