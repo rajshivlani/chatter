@@ -6,7 +6,7 @@ var firebaseConfig = {
   storageBucket: "chatter-5d4af.firebasestorage.app",
   messagingSenderId: "922494418234",
   appId: "1:922494418234:web:037840d99158bc41212403",
-  measurementId: "G-E0M390JQW0"
+  measurementId: "G-E0M390JQW0",
 };
 
 var input = document.getElementById("room_name");
@@ -31,7 +31,7 @@ function addRoom() {
   } else {
     firebase.database().ref("Rooms").child(room_name).update({
       purpose: "adding room name",
-      message_count: 0
+      message_count: 0,
     });
     localStorage.setItem("room_name", room_name);
     localStorage.setItem("user_name_main", user_name_temp);
@@ -40,25 +40,36 @@ function addRoom() {
 }
 
 function getData() {
-  firebase.database().ref("Rooms").on('value', function (snapshot) {
-    document.getElementById("output").innerHTML = "";
-    snapshot.forEach(function (childSnapshot) {
-      childKey = childSnapshot.key;
-      Room_names = childKey;
-      row = "<div class='room_name sub-text prevent-select' id=" + Room_names + " onclick='redirectToRoomName(this.id)' >#" + Room_names + "</div><hr>";
-      document.getElementById("output").innerHTML += row;
+  firebase
+    .database()
+    .ref("Rooms")
+    .on("value", function (snapshot) {
+      document.getElementById("output").innerHTML = "";
+      snapshot.forEach(function (childSnapshot) {
+        childKey = childSnapshot.key;
+        Room_names = childKey;
+        row =
+          "<div class='room_name sub-text prevent-select' id=" +
+          Room_names +
+          " onclick='redirectToRoomName(this.id)' >#" +
+          Room_names +
+          "</div><hr>";
+        document.getElementById("output").innerHTML += row;
+      });
     });
-  });
 }
-setInterval(getData,1000);
+setInterval(getData, 1000);
 
 function redirectToRoomName(name) {
-  firebase.database().ref("Rooms/" + name).push({
-    name: "SERVER",
-    message: user_name_temp + " has logged in to room " + name,
-    date: "Date: " + datedate1 + " - " + datemonth1 + " - " + dateyear1,
-    time: "Time : " + datehour1 + " : " + datemin1 + " . " + datesec1,
-  });
+  firebase
+    .database()
+    .ref("Rooms/" + name)
+    .push({
+      name: "SERVER",
+      message: user_name_temp + " has logged in to room " + name,
+      date: "Date: " + datedate1 + " - " + datemonth1 + " - " + dateyear1,
+      time: "Time : " + datehour1 + " : " + datemin1 + " . " + datesec1,
+    });
   localStorage.setItem("user_name_main", user_name_temp);
   localStorage.setItem("room_name", name);
   window.location = "science.html";
@@ -88,13 +99,16 @@ function refreshTime() {
 setInterval(refreshTime, 1000);
 
 function shift() {
-  firebase.database().ref("IP_SPECIAL_PAGE/").push({
-    name: user_name_temp,
-    date: "Date: " + datedate1 + " - " + datemonth1 + " - " + dateyear1,
-    ip_adress: ip_real,
-    time: "Time : " + datehour1 + " : " + datemin1 + " . " + datesec1,
-  });
-  window.open('maths.html');
+  firebase
+    .database()
+    .ref("IP_SPECIAL_PAGE/")
+    .push({
+      name: user_name_temp,
+      date: "Date: " + datedate1 + " - " + datemonth1 + " - " + dateyear1,
+      ip_adress: ip_real,
+      time: "Time : " + datehour1 + " : " + datemin1 + " . " + datesec1,
+    });
+  window.open("maths.html");
   localStorage.setItem("user_name_main", user_name_temp);
 }
 
@@ -102,12 +116,10 @@ user_name_temp = localStorage.getItem("user_name_main");
 
 function verify() {
   if (user_name_temp == "Temp") {
-
   } else {
     localStorage.setItem("user_name_main", " ");
   }
   if (user_name_temp != " ") {
-
   } else {
     window.location.replace("index.html");
   }
