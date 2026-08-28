@@ -98,20 +98,6 @@ function refreshTime() {
 }
 setInterval(refreshTime, 1000);
 
-function shift() {
-  firebase
-    .database()
-    .ref("IP_SPECIAL_PAGE/")
-    .push({
-      name: user_name_temp,
-      date: "Date: " + datedate1 + " - " + datemonth1 + " - " + dateyear1,
-      ip_adress: ip_real,
-      time: "Time : " + datehour1 + " : " + datemin1 + " . " + datesec1,
-    });
-  window.open("maths.html");
-  localStorage.setItem("user_name_main", user_name_temp);
-}
-
 user_name_temp = localStorage.getItem("user_name_main");
 
 function verify() {

@@ -21,85 +21,91 @@ function showPassword() {
 }
 
 function addUser() {
-  password = document.getElementById("password_entry").value;
+  // password = document.getElementById("password_entry").value;
   user_name = document.getElementById("user_name").value;
-  if (user_name == "raj") {
-    if (password == "r") {
-      firebase.database().ref("Logins/").push({
-        name: user_name,
-        time: time,
-      });
-      localStorage.setItem("user_name_main", user_name);
-      window.location = "english.html";
-    } else {
-      firebase.database().ref("Failed_Logins/").push({
-        name: user_name,
-        time: time,
-        password: password
-      });
-      console.log("wrong password");
-    }
-  } else if (user_name == "Raj") {
-    if (password == "r") {
-      firebase.database().ref("Logins/").push({
-        name: user_name,
-        time: time,
-      });
-      localStorage.setItem("user_name_main", user_name);
-      window.location = "english.html";
-    } else {
-      firebase.database().ref("Failed_Logins/").push({
-        name: user_name,
-        time: time,
-        password: password
-      });
-      window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
-    }
-  }else if (user_name == "user123") {
-    if (password == "bits") {
-      firebase.database().ref("Logins/").push({
-        name: user_name,
-        time: time,
-      });
-      localStorage.setItem("user_name_main", user_name);
-      window.location = "english.html";
-    } else {
-      firebase.database().ref("Failed_Logins/").push({
-        name: user_name,
-        time: time,
-        password: password
-      });
-      window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
-    }
-  } else if (user_name == " ") {
-    if (password == " ") {
-      firebase.database().ref("Logins/").push({
-        name: user_name,
-        time: time,
-      });
-      localStorage.setItem("user_name_main", user_name);
-      window.location = "english.html";
-    } else {
-      firebase.database().ref("Failed_Logins/").push({
-        name: user_name,
-        time: time,
-        password: password
-      });
-      window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
-    }
-  } else if (user_name == "Temp") {
-    if (password == "12") {
-      localStorage.setItem("user_name_main", user_name);
-      window.location = "english.html";
-    } else {
-      window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
-    }
-  } else {
-    firebase.database().ref("Failed_Logins/").push({
-      name: user_name,
-      time: time,
-      password: password,
-    });
-    window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
-  }
+  firebase.database().ref("Logins/").push({
+    name: user_name,
+    time: time,
+  });
+  localStorage.setItem("user_name_main", user_name);
+  window.location = "english.html";
+  // if (user_name == "raj") {
+  //   if (password == "r") {
+  //     firebase.database().ref("Logins/").push({
+  //       name: user_name,
+  //       time: time,
+  //     });
+  //     localStorage.setItem("user_name_main", user_name);
+  //     window.location = "english.html";
+  //   } else {
+  //     firebase.database().ref("Failed_Logins/").push({
+  //       name: user_name,
+  //       time: time,
+  //       password: password
+  //     });
+  //     console.log("wrong password");
+  //   }
+  // } else if (user_name == "Raj") {
+  //   if (password == "r") {
+  //     firebase.database().ref("Logins/").push({
+  //       name: user_name,
+  //       time: time,
+  //     });
+  //     localStorage.setItem("user_name_main", user_name);
+  //     window.location = "english.html";
+  //   } else {
+  //     firebase.database().ref("Failed_Logins/").push({
+  //       name: user_name,
+  //       time: time,
+  //       password: password
+  //     });
+  //     window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
+  //   }
+  // }else if (user_name == "user123") {
+  //   if (password == "bits") {
+  //     firebase.database().ref("Logins/").push({
+  //       name: user_name,
+  //       time: time,
+  //     });
+  //     localStorage.setItem("user_name_main", user_name);
+  //     window.location = "english.html";
+  //   } else {
+  //     firebase.database().ref("Failed_Logins/").push({
+  //       name: user_name,
+  //       time: time,
+  //       password: password
+  //     });
+  //     window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
+  //   }
+  // } else if (user_name == " ") {
+  //   if (password == " ") {
+  //     firebase.database().ref("Logins/").push({
+  //       name: user_name,
+  //       time: time,
+  //     });
+  //     localStorage.setItem("user_name_main", user_name);
+  //     window.location = "english.html";
+  //   } else {
+  //     firebase.database().ref("Failed_Logins/").push({
+  //       name: user_name,
+  //       time: time,
+  //       password: password
+  //     });
+  //     window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
+  //   }
+  // } else if (user_name == "Temp") {
+  //   if (password == "12") {
+  //     localStorage.setItem("user_name_main", user_name);
+  //     window.location = "english.html";
+  //   } else {
+  //     window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
+  //   }
+  // } else {
+  //   firebase.database().ref("Failed_Logins/").push({
+  //     name: user_name,
+  //     time: time,
+  //     password: password,
+  //   });
+  //   window.location = "https://www.learncbse.in/ncert-solutions-class-10-science/";
+  // }
 }
